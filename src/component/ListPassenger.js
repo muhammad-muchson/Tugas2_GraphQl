@@ -26,7 +26,7 @@ const GetDataByUserId = gql `
 `;
 
 const ListPassenger = props => {
-        const [getData,{data, loading, error}] = useLazyQuery(GetData)
+        const [getData,{data, loading, error}] = useLazyQuery(GetDataByUserId) //salah memasukkan query
         const [dataId,setDataId] = useState(0);
 
         if(loading){
@@ -39,19 +39,23 @@ const ListPassenger = props => {
         }
 
         const onGetData = () => {
-            getData()
-//             this.setState(data?.anggota);
+            console.log("masuk = ", dataId);
+            getData({variables : {
+                id : dataId
+            }})
+            // getDatanya belum di masukkan query dan vairabel
+            // this.setState(data?.anggota);
         }
 
-//         const onChangeDataId = (e) =>{
-//             if(e.target){
-//                 setDataId(e.target.value)
-//             }
-//         }
+        const onChangeDataId = (e) =>{
+            if(e.target){
+                setDataId(e.target.value)
+            }
+        }
     
     return (
         <div>
-//             <input value={dataId} onChange={onChangeDataId}/>
+            <input value={dataId} onChange={onChangeDataId}/>
             <button onClick={onGetData}>Get Data</button>
             <table cellPadding="5px" cellSpacing="0" style={{margin: "auto"}}>
                 <thead bgcolor="red">
