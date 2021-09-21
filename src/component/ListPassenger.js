@@ -1,7 +1,8 @@
 import ListItem from './ListItem';
 import {gql, useQuery, useLazyQuery} from '@apollo/client'
 import LoadingSvg from "./LoadingSvg"
-import PassengerInput from './PassengerInput';
+import { useState } from "react"
+
 
 const GetData = gql`
     query MyQuery {
@@ -38,14 +39,21 @@ const ListPassenger = props => {
         }
 
         const onGetData = () => {
-            getData();
+            getData()
             this.setState(data?.anggota);
+        }
+
+        const onChangeDataId = (e) =>{
+            if(e.target){
+                setDataId(e.target.value)
+            }
         }
     
     return (
         <div>
+            <input value={dataId} onChange={onChangeDataId}/>
+            <button onClick={onGetData}>Get Data</button>
             <table cellPadding="5px" cellSpacing="0" style={{margin: "auto"}}>
-                <button onClick={onGetData}>Get Data</button>
                 <thead bgcolor="red">
                     <td>Nama</td>
                     <td>Umur</td>
