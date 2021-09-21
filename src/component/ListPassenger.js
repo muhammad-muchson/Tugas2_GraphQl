@@ -26,7 +26,7 @@ const GetDataByUserId = gql `
 `;
 
 const ListPassenger = props => {
-        const [getData,{data, loading, error}] = useLazyQuery(GetDataByUserId)
+        const [getData,{data, loading, error}] = useLazyQuery(GetData)
         const [dataId,setDataId] = useState(0);
 
         if(loading){
@@ -40,18 +40,18 @@ const ListPassenger = props => {
 
         const onGetData = () => {
             getData()
-            this.setState(data?.anggota);
+//             this.setState(data?.anggota);
         }
 
-        const onChangeDataId = (e) =>{
-            if(e.target){
-                setDataId(e.target.value)
-            }
-        }
+//         const onChangeDataId = (e) =>{
+//             if(e.target){
+//                 setDataId(e.target.value)
+//             }
+//         }
     
     return (
         <div>
-            <input value={dataId} onChange={onChangeDataId}/>
+//             <input value={dataId} onChange={onChangeDataId}/>
             <button onClick={onGetData}>Get Data</button>
             <table cellPadding="5px" cellSpacing="0" style={{margin: "auto"}}>
                 <thead bgcolor="red">
