@@ -26,7 +26,7 @@ const GetDataByUserId = gql `
 `;
 
 const ListPassenger = props => {
-        const [getData,{data, loading, error}] = useLazyQuery(GetData)
+        const [getData,{data, loading, error}] = useLazyQuery(GetDataByUserId)
         const [dataId,setDataId] = useState(0);
 
         if(loading){
